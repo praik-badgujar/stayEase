@@ -5,11 +5,11 @@ FROM maven:3.8.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
 # Copy only the pom.xml and download dependencies
-COPY pom.xml ./
+COPY StayEase/pom.xml ./
 RUN mvn dependency:go-offline -B
 
 # Copy the rest of the application source code
-COPY src ./src
+COPY StayEase/src ./src
 
 # Build the application
 RUN mvn clean package -DskipTests
